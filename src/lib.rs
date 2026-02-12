@@ -364,7 +364,7 @@ pub fn run(tool: Tool, matches: &ArgMatches) -> Result<i32> {
             let file = artifact
                 .executable
                 .as_ref()
-                .map_or_else(|| &artifact.filenames[0], |val| val);
+                .unwrap_or_else(|| &artifact.filenames[0]);
 
             match tool {
                 // Tools that don't need a build
